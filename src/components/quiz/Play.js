@@ -17,6 +17,7 @@ function App() {
     const [skipNow,setSkipNow] = useState(false);
 
 
+
     const handleScore = () => {
         setIncorrect(ques.length - correct)
     }
@@ -29,6 +30,8 @@ function App() {
         const temp = [...checkArray];
         temp[questionNumber - 1] = 1;
         setCheckArray(temp);
+
+        if(questionNumber === 15) handleSubmit();
         setQuestionNumber(questionNumber + 1);
     }
 
@@ -55,6 +58,7 @@ function App() {
                                 setTimeOut={setTimeOut}
                                 questionNumber={questionNumber}
                                 setQuestionNumber = {setQuestionNumber}
+                            //    setColor = {setColor}
                             />
                         </div>
                     </div>
@@ -69,6 +73,7 @@ function App() {
                             setCheckArray={setCheckArray}
                             setCorrect={setCorrect}
                             correct={correct}
+                            handleSubmit={handleSubmit}
                         />
                     </div>
                     <div className="flex justify-end h-[12vh]">

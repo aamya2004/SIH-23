@@ -8,6 +8,7 @@ export default function Trivia({
     timeOut,
     checkArray,
     setCorrect,
+    handleSubmit,
     correct,
     setCheckArray
 }) {
@@ -28,21 +29,20 @@ export default function Trivia({
 
     const handleClick = (a) => {
         setSelectedAnswer(a);
-
         delay(1000, () => {
             if (question.answer === a) {
                 delay(0, () => {
                     setCorrect(correct + 1);
-                    setQuestionNumber(questionNumber + 1);
                     setSelectedAnswer(null);
                 });
             } else {
                 delay(0, () => {
-                    setQuestionNumber(questionNumber + 1);
                     setSelectedAnswer(null);
                 });
             }
         })
+        if(questionNumber === 15) handleSubmit();
+        setQuestionNumber(questionNumber + 1);
         const temp = [...checkArray];
         temp[questionNumber - 1] = 2;
         setCheckArray(temp);
